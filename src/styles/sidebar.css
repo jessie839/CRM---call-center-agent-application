@@ -1,0 +1,414 @@
+/* ── Sidebar shell ── */
+.nsb {
+  width: 80px;
+  flex-shrink: 0;
+  background: var(--accent);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 28px 0;
+  z-index: 100;
+  overflow: visible;
+  /* curves must bleed outside */
+  position: relative;
+  padding-left: 5px;
+border-radius: 0px;
+padding-left: 10px; 
+}
+
+/* ── Logo ── */
+.nsb-logo {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 36px;
+  flex-shrink: 0;
+}
+
+.nsb-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ── Items wrapper (relative so the curve overlay positions inside it) ── */
+.nsb-items {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  flex: 1;
+  gap: 8px;
+}
+
+/* ── Spacer (pushes bottom icons to the end) ── */
+.nsb-spacer {
+  flex: 1;
+}
+
+
+.nsb-curve-track {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 64px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.nsb-curve-track--ready {
+  /* Enhanced liquid/spring effect */
+  transition: transform 0.55s cubic-bezier(0.5, 1.5, 0.4, 1);
+}
+
+/* White pill that punches the icon "out" of the sidebar */
+.nsb-curve-pill {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--surface2, #f4f5f7);
+  border-radius: 32px 0 0 32px;
+  /* rounded on the left, flush on the right */
+}
+
+
+.nsb-curve-corner {
+  position: absolute;
+  right: 0;
+  width: 24px;
+  height: 24px;
+  background: transparent;
+}
+
+.nsb-curve-corner--top {
+  top: -24px;
+  border-radius: 0 0 24px 0;
+  box-shadow: 8px 8px 0 8px var(--surface2, #f4f5f7);
+}
+
+.nsb-curve-corner--bot {
+  bottom: -24px;
+  border-radius: 0 24px 0 0;
+  box-shadow: 8px -8px 0 8px var(--surface2, #f4f5f7);
+}
+
+
+.nsb-icon {
+  position: relative;
+  z-index: 1;
+  /* sit above the curve track */
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  border-radius: 50%;
+  transition: color 0.2s ease, transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+}
+
+.nsb-icon:hover {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Active state: icon pops onto the white pill */
+.nsb-icon--active,
+.nsb-icon--active:hover {
+  color: var(--accent);
+  transform: translateX(0);
+  /* icon stays centred; pill is behind it */
+}
+
+/* The icon itself gets a tiny white circle backdrop for extra pop */
+.nsb-icon--active svg {
+  filter: drop-shadow(0 0 0 transparent);
+  /* reset any inherited filter */
+}
+
+/* ================================================================
+   HIDE on mobile
+   ================================================================ */
+
+@media (max-width: 1024px) {
+  .nsb.desktop-only {
+    display: none;
+  }
+}
+
+
+/* ================================================================
+   MOBILE — kept exactly as original (no changes to mobile UX)
+   ================================================================ */
+
+/* Hamburger */
+.mob-hamburger-btn {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .mob-hamburger-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+    top: 17px;
+    left: 16px;
+    z-index: 300;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text-sec);
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    margin-top: -47px;
+  }
+}
+
+/* Backdrop */
+.mob-sidebar-backdrop {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .mob-sidebar-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(3px);
+    z-index: 400;
+    animation: backdropFadeIn 0.25s ease;
+  }
+}
+
+@keyframes backdropFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Mobile sidebar */
+.mob-sidebar {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .mob-sidebar {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 280px;
+    background: var(--surface);
+    z-index: 500;
+    transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.12);
+  }
+
+  .mob-sidebar--open {
+    transform: translateX(0);
+  }
+
+  .mob-sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 20px 16px;
+    border-bottom: 1px solid var(--surface2);
+    background: var(--accent);
+  }
+
+  .mob-sidebar-logo {
+    height: 32px;
+    width: auto;
+  }
+
+  .mob-sidebar-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-sm);
+    border: none;
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--text-inverse);
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .mob-sidebar-close:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  .mob-sidebar-nav {
+    flex: 1;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    overflow-y: auto;
+  }
+
+  .mob-sidebar-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 7px;
+    border-radius: var(--radius);
+    cursor: pointer;
+    color: var(--muted);
+    font-size: 14px;
+    font-weight: 600;
+    transition: background 0.2s, color 0.2s;
+    position: relative;
+  }
+
+  .mob-sidebar-item:hover {
+    background: var(--accent-light);
+    color: var(--accent);
+  }
+
+  .mob-sidebar-item--active {
+    background: var(--accent-light);
+    color: var(--accent);
+  }
+
+  .mob-sidebar-item__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius);
+    background: var(--surface3);
+    flex-shrink: 0;
+    color: inherit;
+    transition: background 0.2s;
+  }
+
+  .mob-sidebar-item--active .mob-sidebar-item__icon {
+    background: var(--accent-light);
+    color: var(--accent);
+  }
+
+  .mob-sidebar-item__label {
+    flex: 1;
+  }
+
+  .mob-sidebar-item__arrow {
+    color: var(--accent-light);
+    flex-shrink: 0;
+  }
+
+  .mob-sidebar-item__chevron {
+    display: flex;
+    align-items: center;
+    color: var(--muted);
+    transition: transform 0.25s ease;
+    flex-shrink: 0;
+  }
+
+  .mob-sidebar-item__chevron--open {
+    transform: rotate(180deg);
+  }
+
+  /* Submenu */
+  .mob-sidebar-submenu {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-left: 16px;
+    padding-left: 16px;
+    border-left: 2px solid var(--border);
+  }
+
+  .mob-sidebar-submenu--open {
+    grid-template-rows: 1fr;
+  }
+
+  .mob-sidebar-submenu>* {
+    overflow: hidden;
+  }
+
+  .mob-sidebar-subitem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--muted);
+    transition: background 0.2s, color 0.2s;
+    position: relative;
+    margin-bottom: 2px;
+  }
+
+  .mob-sidebar-subitem:hover {
+    background: var(--accent-light);
+    color: var(--accent);
+  }
+
+  .mob-sidebar-subitem--active {
+    background: var(--accent-light);
+    color: var(--accent);
+  }
+
+  .mob-sidebar-subitem__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius-sm);
+    background: var(--surface3);
+    flex-shrink: 0;
+    color: inherit;
+  }
+
+  .mob-sidebar-subitem--active .mob-sidebar-subitem__icon {
+    background: var(--accent-light);
+  }
+
+  .mob-sidebar-subitem__dot {
+    margin-left: auto;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .mob-sidebar-footer {
+    padding: 16px 20px;
+    border-top: 1px solid var(--surface2);
+  }
+
+  .mob-sidebar-footer__text {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 500;
+  }
+}

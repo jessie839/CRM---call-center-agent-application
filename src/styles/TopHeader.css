@@ -1,0 +1,1025 @@
+/* ── Backdrop ── */
+.notif-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    background: transparent;
+}
+
+/* ── Call Log Dot ── */
+.call-log-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: var(--danger);
+    border-radius: 50%;
+    margin-left: 8px;
+}
+
+/* ── Social Menu ── */
+.social-menu-wrapper {
+    position: relative;
+}
+
+.social-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 10px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    width: 220px;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.social-dropdown-header {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--surface2);
+    background: var(--surface2);
+}
+
+.social-dropdown-body {
+    padding: 16px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.social-dropdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 12px 4px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--text-main);
+    border-radius: 12px;
+    transition: all 0.2s ease;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.social-dropdown-item:hover {
+    background: var(--surface2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.social-dropdown-item:active {
+    transform: scale(0.95);
+}
+
+/* ── Bell / Unread Badge ── */
+.bell-wrapper {
+    position: relative;
+}
+
+.unread-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background: var(--danger, #ef4444);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1;
+    min-width: 16px;
+    height: 16px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
+    pointer-events: none;
+}
+
+/* ── Notification Slider Panel ── */
+.notif-panel {
+    position: fixed;
+    top: 0;
+    right: -420px;
+    width: 380px;
+    height: 100vh;
+    background: var(--surface);
+    border-left: 1px solid var(--border);
+    box-shadow: none;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.notif-panel--open {
+    right: 0;
+    box-shadow: -8px 0 40px rgba(0, 0, 0, 0.13);
+}
+
+.notif-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 20px 16px;
+    border-bottom: 1px solid var(--border);
+}
+
+.notif-panel-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.notif-panel-title span:nth-child(2) {
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--text-main);
+}
+
+.notif-new-badge {
+    background: var(--danger, #ef4444);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 999px;
+}
+
+.notif-close-btn {
+    background: var(--surface2);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px;
+    border-radius: 50%;
+    color: var(--text-main);
+    transition: background 0.2s;
+}
+
+.notif-close-btn:hover,
+.notif-close-btn.hovered {
+    background: var(--surface3);
+}
+
+/* ── Notification Quick Actions ── */
+.notif-actions-bar {
+    display: flex;
+    gap: 8px;
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface2);
+}
+
+.notif-action-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    background: transparent;
+    border-radius: 6px;
+    padding: 5px 12px;
+    cursor: pointer;
+}
+
+.notif-action-btn--primary {
+    color: var(--accent);
+    border: 1px solid var(--accent);
+}
+
+.notif-action-btn--muted {
+    color: var(--muted);
+    border: 1px solid var(--border);
+}
+
+/* ── Notification List ── */
+.notif-list {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.notif-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: var(--muted);
+    gap: 12px;
+}
+
+.notif-empty-icon {
+    opacity: 0.15;
+}
+
+.notif-empty-title {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.notif-empty-sub {
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+.notif-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    position: relative;
+    background: transparent;
+    transition: background 0.2s;
+}
+
+.notif-item--unread {
+    background: var(--accent-light, rgba(99, 102, 241, 0.06));
+}
+
+.notif-item-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.notif-item-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.notif-item-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.notif-item-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-main);
+    line-height: 1.3;
+}
+
+.notif-item-title--unread {
+    font-weight: 700;
+}
+
+.notif-item-time {
+    font-size: 11px;
+    color: var(--muted);
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.notif-item-text {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 4px;
+    line-height: 1.5;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.notif-unread-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 6px;
+    background: var(--accent, #6366f1);
+}
+
+/* ── WhatsApp Widget ── */
+.wa-widget {
+    position: fixed;
+    top: 90px;
+    right: 24px;
+    width: 360px;
+    height: 500px;
+    background: var(--surface);
+    border-radius: 16px;
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+}
+
+.wa-widget-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-bottom: none;
+    background: #075E54;
+    color: #fff;
+    cursor: grab;
+    user-select: none;
+}
+
+.wa-widget-header--dragging {
+    cursor: grabbing;
+}
+
+.wa-widget-title {
+    margin: 0;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.wa-widget-close-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    border-radius: 50%;
+    transition: background 0.2s;
+}
+
+.wa-widget-close-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.wa-search-bar {
+    padding: 12px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+}
+
+.wa-search-input-wrapper {
+    display: flex;
+    align-items: center;
+    background: var(--surface2);
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+}
+
+.wa-search-icon {
+    margin-right: 8px;
+}
+
+.wa-search-input {
+    border: none;
+    background: transparent;
+    outline: none;
+    color: var(--text-main);
+    width: 100%;
+    font-size: 14px;
+}
+
+.wa-contact-list {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.wa-contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.wa-contact-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--accent-light);
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+.wa-contact-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.wa-contact-name {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--text-main);
+}
+
+.wa-contact-number {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 4px;
+}
+
+.wa-no-results {
+    padding: 40px 20px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.wa-no-results-icon {
+    opacity: 0.2;
+    margin-bottom: 16px;
+}
+
+/* ── WhatsApp Dark Mode Overrides ── */
+[data-theme='dark'] .wa-widget {
+    background: #0b141a;
+    border-color: #222d34;
+}
+
+[data-theme='dark'] .wa-widget-header {
+    background: #202c33;
+    color: #e9edef;
+}
+
+[data-theme='dark'] .wa-search-bar {
+    background: #0b141a;
+    border-color: #222d34;
+}
+
+[data-theme='dark'] .wa-search-input-wrapper {
+    background: #202c33;
+    border-color: #202c33;
+}
+
+[data-theme='dark'] .wa-search-input {
+    color: #e9edef;
+}
+
+[data-theme='dark'] .wa-contact-item {
+    border-color: #222d34;
+}
+
+[data-theme='dark'] .wa-contact-name {
+    color: #e9edef;
+}
+
+[data-theme='dark'] .wa-contact-number {
+    color: #8696a0;
+}
+
+[data-theme='dark'] .wa-chat-body {
+    background: #0b141a;
+    background-image: linear-gradient(rgba(11, 20, 26, 0.95), rgba(11, 20, 26, 0.95)), url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');
+    background-size: contain;
+}
+
+[data-theme='dark'] .wa-msg-in {
+    background: #202c33;
+    color: #e9edef;
+}
+
+[data-theme='dark'] .wa-msg-out {
+    background: #005c4b;
+    color: #e9edef;
+}
+
+[data-theme='dark'] .wa-msg-time {
+    color: #8696a0;
+}
+
+[data-theme='dark'] .wa-chat-footer {
+    background: #202c33;
+}
+
+[data-theme='dark'] .wa-chat-input {
+    background: #2a3942;
+    color: #e9edef;
+}
+
+[data-theme='dark'] .wa-send-btn {
+    background: #00a884;
+}
+
+[data-theme='dark'] .wa-chat-avatar {
+    background: #6a7175;
+}
+
+/* ── WhatsApp Chat UI ── */
+.wa-chat-header-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.wa-chat-avatar {
+    width: 32px;
+    height: 32px;
+    background: #128C7E;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.wa-chat-body {
+    flex: 1;
+    background: #e5ddd5;
+    padding: 16px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.wa-msg-bubble {
+    max-width: 80%;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    position: relative;
+    line-height: 1.4;
+}
+
+.wa-msg-file {
+    padding: 4px;
+}
+
+.chat-media-preview {
+    max-width: 100%;
+    max-height: 200px;
+    border-radius: 6px;
+    display: block;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.chat-media-preview:hover {
+    opacity: 0.9;
+}
+
+.chat-file-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: inherit;
+    text-decoration: none;
+    background: rgba(0, 0, 0, 0.05);
+    padding: 8px;
+    border-radius: 6px;
+}
+
+[data-theme='dark'] .chat-file-link {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.wa-msg-in {
+    align-self: flex-start;
+    background: #fff;
+    border-top-left-radius: 0;
+}
+
+.wa-msg-out {
+    align-self: flex-end;
+    background: #dcf8c6;
+    border-top-right-radius: 0;
+}
+
+.wa-msg-time {
+    font-size: 10px;
+    color: var(--muted);
+    text-align: right;
+    margin-top: 4px;
+}
+
+.wa-chat-footer {
+    padding: 10px;
+    background: #f0f0f0;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.wa-chat-input {
+    flex: 1;
+    background: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 13px;
+    outline: none;
+}
+
+.wa-send-btn {
+    background: #128C7E;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.wa-attach-btn {
+    background: transparent;
+    border: none;
+    color: var(--muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    flex-shrink: 0;
+    transition: color 0.2s;
+}
+
+.wa-attach-btn:hover {
+    color: #128C7E;
+}
+
+.chat-date-separator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 16px 0;
+}
+
+.chat-date-separator span {
+    background: rgba(0, 0, 0, 0.05);
+    padding: 4px 12px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+}
+
+[data-theme='dark'] .chat-date-separator span {
+    background: rgba(255, 255, 255, 0.1);
+    color: #8696a0;
+}
+
+.wa-back-btn {
+    background: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin-right: 4px;
+    transition: transform 0.2s;
+}
+
+.wa-back-btn:hover {
+    transform: translateX(-2px);
+}
+
+/* ── Facebook Widget ── */
+.fb-widget {
+    position: fixed;
+    top: 90px;
+    right: 24px;
+    width: 340px;
+    height: 500px;
+    background: var(--surface);
+    border-radius: 12px;
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.18);
+    border: 1px solid var(--border);
+    z-index: 10001;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.fb-widget-header {
+    background: #1877F2;
+    color: #fff;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: grab;
+}
+
+.fb-widget-title {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.fb-widget-close-btn {
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    color: #fff;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.fb-content {
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 8px 0;
+}
+
+.fb-item {
+    display: flex;
+    gap: 12px;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.2s;
+    cursor: pointer;
+}
+
+.fb-item:hover {
+    background: var(--surface2);
+}
+
+.fb-item-avatar {
+    width: 40px;
+    height: 40px;
+    background: #e7f3ff;
+    color: #1877F2;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.fb-item-details {
+    flex: 1;
+}
+
+.fb-item-user {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--text-main);
+}
+
+.fb-item-msg {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 2px 0;
+}
+
+.fb-item-time {
+    font-size: 11px;
+    color: #1877F2;
+    font-weight: 500;
+}
+
+.fb-footer {
+    padding: 12px;
+    text-align: center;
+    border-top: 1px solid var(--border);
+}
+
+.fb-footer-btn {
+    background: transparent;
+    border: none;
+    color: #1877F2;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.fb-footer-btn:hover {
+    text-decoration: underline;
+}
+
+.fb-back-btn {
+    background: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin-right: 4px;
+    transition: transform 0.2s;
+}
+
+.fb-back-btn:hover {
+    transform: translateX(-2px);
+}
+
+/* ── Facebook Dark Mode Overrides ── */
+[data-theme='dark'] .fb-widget {
+    background: #1c1c1c;
+    border-color: #333;
+}
+
+[data-theme='dark'] .fb-widget-header {
+    background: #242526;
+    border-bottom: 1px solid #333;
+}
+
+[data-theme='dark'] .fb-chat-body {
+    background: #1c1c1c;
+}
+
+[data-theme='dark'] .fb-msg-in {
+    background: #3e4042;
+    color: #e4e6eb;
+}
+
+[data-theme='dark'] .fb-chat-footer {
+    background: #1c1c1c;
+    border-color: #333;
+}
+
+[data-theme='dark'] .fb-chat-input {
+    background: #3a3b3c;
+    color: #e4e6eb;
+}
+
+[data-theme='dark'] .fb-chat-avatar {
+    background: #303030;
+    color: #1877F2;
+}
+
+/* ── Facebook Chat UI ── */
+.fb-chat-header-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.fb-chat-avatar {
+    width: 32px;
+    height: 32px;
+    background: #e7f3ff;
+    color: #1877F2;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.fb-chat-body {
+    flex: 1;
+    background: var(--surface);
+    padding: 16px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.fb-msg-bubble {
+    max-width: 75%;
+    padding: 8px 14px;
+    border-radius: 18px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.fb-msg-in {
+    align-self: flex-start;
+    background: var(--surface2);
+    color: var(--text-main);
+}
+
+.fb-msg-out {
+    align-self: flex-end;
+    background: #0084ff;
+    color: #fff;
+}
+
+.fb-msg-time {
+    font-size: 10px;
+    margin-top: 4px;
+    opacity: 0.6;
+}
+
+.fb-msg-out .fb-msg-time {
+    text-align: right;
+    color: #fff;
+}
+
+.fb-chat-footer {
+    padding: 12px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.fb-chat-input {
+    flex: 1;
+    background: var(--surface2);
+    border: none;
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 14px;
+    color: var(--text-main);
+    outline: none;
+}
+
+.fb-send-btn {
+    color: #0084ff;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.fb-attach-btn {
+    background: transparent;
+    border: none;
+    color: #0084ff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    flex-shrink: 0;
+}
+
+/* ── Mobile Responsiveness ── */
+@media (max-width: 768px) {
+    .new-top-header {
+        padding: 0 12px;
+    }
+
+    .header-tabs {
+        display: none; /* Hide tabs on mobile or make it a dropdown if needed */
+    }
+
+    .header-text {
+        font-size: 14px;
+    }
+
+    .social-dropdown {
+        position: fixed;
+        top: 60px;
+        left: 12px;
+        right: 12px;
+        width: auto;
+        transform: none;
+    }
+
+    .wa-widget, .fb-widget {
+        width: calc(100vw - 24px);
+        right: 12px;
+        left: 12px;
+        height: 80vh;
+        top: 70px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-actions {
+        gap: 8px;
+    }
+
+    .header-icon {
+        width: 32px;
+        height: 32px;
+    }
+}

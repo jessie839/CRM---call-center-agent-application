@@ -1,0 +1,748 @@
+/* ── Google Font ── */
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* ══════════════════════════════
+   ROOT LAYOUT
+══════════════════════════════ */
+.ldp-root {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  font-family: "DM Sans", system-ui, sans-serif;
+  background: var(--surface2);
+  overflow: hidden;
+}
+
+/* ══════════════════════════════
+   LEFT SIDEBAR
+══════════════════════════════ */
+.ldp-sidebar {
+  width: 260px;
+  min-width: 260px;
+  background: var(--surface); border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  flex-shrink: 0;
+  margin-left: 25px;
+}
+
+/* Sidebar header row */
+.ldp-sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.ldp-sidebar-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--accent-2);
+}
+
+.ldp-sidebar-call-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--accent-light);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  transition: background 0.15s;
+}
+.ldp-sidebar-call-btn:hover {
+  background: #bbdefb;
+}
+
+/* Avatar */
+.ldp-avatar-wrap {
+  display: flex;
+  justify-content: center;
+  padding: 22px 0 12px;
+}
+
+.ldp-avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--text-inverse);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
+  letter-spacing: 1px;
+}
+
+/* Name + phone */
+.ldp-sidebar-name-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 0 18px 18px;
+  border-bottom: 1px solid var(--border);
+}
+
+.ldp-sidebar-fullname {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.ldp-sidebar-phone {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent-2);
+}
+
+/* Info rows */
+.ldp-sidebar-info-list {
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.ldp-sidebar-info-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 18px;
+  border-bottom: 1px solid var(--surface2);
+  gap: 8px;
+}
+
+.ldp-sidebar-info-value {
+  font-size: 12.5px;
+  color: var(--text-sec);
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ldp-sidebar-info-icon {
+  font-size: 14px;
+  flex-shrink: 0;
+  opacity: 0.55;
+}
+
+/* Call stats */
+.ldp-sidebar-stats {
+  padding: 8px 0 16px;
+}
+
+.ldp-sidebar-stat-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 11px 18px;
+  border-bottom: 1px solid var(--surface2);
+}
+
+.ldp-sidebar-stat-label {
+  font-size: 13px;
+  color: var(--text-sec);
+}
+
+.ldp-sidebar-stat-val {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+/* ══════════════════════════════
+   RIGHT CONTENT AREA
+══════════════════════════════ */
+.ldp-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--surface);
+}
+
+/* Content topbar */
+.ldp-content-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  height: 54px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+  background: var(--surface);
+}
+
+.ldp-content-topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ldp-btn-back {
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface);ursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-size: 16px;
+  transition: background 0.12s;
+}
+.ldp-btn-back:hover {
+  background: var(--surface2);
+}
+
+.ldp-lead-id-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--accent-2);
+}
+
+.ldp-content-topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ldp-topbar-icon-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface);ursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  transition:
+    background 0.12s,
+    border-color 0.12s;
+}
+.ldp-topbar-icon-btn:hover {
+  background: var(--accent-light);
+  border-color: #90caf9;
+}
+
+/* ── Tabs ── */
+.ldp-tabs {
+  display: flex;
+  align-items: flex-end;
+  gap: 0;
+  padding: 0 20px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);lex-shrink: 0;
+  overflow-x: auto;
+}
+
+.ldp-tab {
+  padding: 14px 20px 12px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--muted);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  font-family: inherit;
+  white-space: nowrap;
+  transition:
+    color 0.15s,
+    border-color 0.15s;
+}
+.ldp-tab:hover {
+  color: var(--accent);
+}
+
+.ldp-tab--active {
+  color: var(--accent-2);
+  font-weight: 600;
+  border-bottom-color: var(--accent);
+}
+
+/* Tab content area */
+.ldp-tab-content {
+  flex: 1;
+  overflow-y: auto;
+  background: var(--surface2);
+  padding: 24px 28px;
+}
+
+/* ══════════════════════════════
+   DETAILS TAB
+══════════════════════════════ */
+.ldp-details-tab {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Form card */
+.ldp-form-card {
+  background: var(--surface);border-radius: var(--radius);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
+}
+
+.ldp-form-card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 22px;
+  border-bottom: 1px solid var(--border);
+}
+
+.ldp-form-card-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+.ldp-form-card-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+/* 2-col form grid */
+.ldp-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.ldp-field {
+  padding: 18px 22px;
+  border-bottom: 1px solid var(--border);
+}
+
+.ldp-field--left {
+  border-right: 1px solid var(--border);
+}
+
+.ldp-field-label {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--text-sec);
+  margin-bottom: 7px;
+}
+
+.ldp-field-required {
+  color: var(--danger);
+}
+
+/* Input */
+.ldp-field-input {
+  width: 100%;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  padding: 0 14px;
+  font-size: 13.5px;
+  font-family: inherit;
+  color: var(--text-main);
+  background: var(--surface);
+  outline: none;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
+}
+.ldp-field-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.1);
+}
+.ldp-field-input--filled {
+  background: var(--surface2);
+  color: var(--text-sec);
+}
+
+/* Select wrapper */
+.ldp-select-wrap {
+  position: relative;
+}
+
+.ldp-field-select {
+  width: 100%;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  padding: 0 36px 0 14px;
+  font-size: 13.5px;
+  font-family: inherit;
+  color: var(--text-main);
+  background: var(--surface);
+  outline: none;
+  appearance: none;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+.ldp-field-select:focus {
+  border-color: var(--accent);
+}
+
+.ldp-select-arrow {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted);
+  pointer-events: none;
+  font-size: 13px;
+}
+
+/* Save actions row */
+.ldp-details-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.ldp-btn-save {
+  height: 38px;
+  border-radius: var(--radius-sm);
+  border: none;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: var(--text-inverse);
+  font-size: 13.5px;
+  font-weight: 600;
+  padding: 0 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: inherit;
+  box-shadow: 0 2px 10px rgba(21, 101, 192, 0.35);
+  transition:
+    opacity 0.15s,
+    transform 0.1s;
+}
+.ldp-btn-save:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+.ldp-btn-save:active {
+  transform: translateY(0);
+}
+
+/* ══════════════════════════════
+   PLACEHOLDER TAB
+══════════════════════════════ */
+.ldp-placeholder-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 320px;
+  gap: 10px;
+  color: var(--muted);
+}
+
+.ldp-placeholder-icon {
+  font-size: 42px;
+  opacity: 0.5;
+}
+
+.ldp-placeholder-label {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--muted);
+  margin: 0;
+}
+
+.ldp-placeholder-sub {
+  font-size: 13px;
+  margin: 0;
+  color: var(--muted);
+}
+
+/* ══════════════════════════════════════════════════════
+   LEAD DETAIL PAGE — MOBILE RESPONSIVENESS ONLY
+   Import this AFTER lead-detail-page.css
+   Affects only screens ≤ 767px
+   Desktop/laptop styles are completely untouched
+══════════════════════════════════════════════════════ */
+
+@media (max-width: 767px) {
+
+  /* ── Root: stack vertically instead of side-by-side ── */
+  .ldp-root {
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+  }
+
+  /* ════════════════════════════════
+     SIDEBAR — collapsible card on top
+  ════════════════════════════════ */
+  .ldp-sidebar {
+    width: 100%;
+    min-width: unset;
+    margin-left: 0;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  /* Sidebar header stays visible always — acts as toggle trigger */
+  .ldp-sidebar-header {
+    padding: 12px 16px;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+  }
+
+  /* Chevron toggle indicator injected via CSS */
+  .ldp-sidebar-header::after {
+    content: "▾";
+    position: absolute;
+    right: 52px; /* leave room for call button */
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: var(--muted);
+    transition: transform 0.25s ease;
+  }
+
+  /* When sidebar is expanded, rotate chevron */
+  .ldp-sidebar--expanded .ldp-sidebar-header::after {
+    transform: translateY(-50%) rotate(180deg);
+  }
+
+  /* Collapsible body — hidden by default on mobile */
+  .ldp-sidebar-collapsible-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Expanded state */
+  .ldp-sidebar--expanded .ldp-sidebar-collapsible-body {
+    max-height: 600px; /* large enough to fit all content */
+  }
+
+  /* Avatar smaller on mobile */
+  .ldp-avatar-wrap {
+    padding: 16px 0 10px;
+  }
+
+  .ldp-avatar {
+    width: 70px;
+    height: 70px;
+    font-size: 24px;
+  }
+
+  .ldp-sidebar-fullname {
+    font-size: 14px;
+  }
+
+  .ldp-sidebar-phone {
+    font-size: 12px;
+  }
+
+  .ldp-sidebar-info-row {
+    padding: 8px 16px;
+  }
+
+  .ldp-sidebar-stat-row {
+    padding: 9px 16px;
+  }
+
+  /* ════════════════════════════════
+     RIGHT CONTENT AREA
+  ════════════════════════════════ */
+  .ldp-content {
+    flex: 1;
+    overflow: visible;
+    height: auto;
+  }
+
+  /* Content topbar */
+  .ldp-content-topbar {
+    padding: 0 14px;
+    height: 48px;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--surface);ox-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+
+  .ldp-lead-id-title {
+    font-size: 13px;
+  }
+
+  .ldp-topbar-icon-btn {
+    width: 30px;
+    height: 30px;
+  }
+
+  /* ── Tabs: horizontal scroll, compact ── */
+  .ldp-tabs {
+    padding: 0 12px;
+    gap: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    position: sticky;
+    top: 48px; /* sits below the fixed topbar */
+    z-index: 19;
+    background: var(--surface);ox-shadow: 0 1px 0 var(--border);
+  }
+
+  .ldp-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .ldp-tab {
+    padding: 12px 14px 10px;
+    font-size: 12.5px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* ── Tab content: natural scroll ── */
+  .ldp-tab-content {
+    overflow: visible;
+    height: auto;
+    padding: 16px 12px;
+    background: var(--surface2);
+  }
+
+  /* ════════════════════════════════
+     DETAILS TAB — form
+  ════════════════════════════════ */
+  .ldp-details-tab {
+    gap: 14px;
+  }
+
+  /* Form card: single column on mobile */
+  .ldp-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Remove the left border divider since we're single column */
+  .ldp-field--left {
+    border-right: none;
+  }
+
+  .ldp-field {
+    padding: 14px 16px;
+  }
+
+  .ldp-form-card-header {
+    padding: 14px 16px;
+  }
+
+  /* Full-width inputs */
+  .ldp-field-input,
+  .ldp-field-select {
+    height: 42px;
+    font-size: 14px;
+  }
+
+  /* Save button full width */
+  .ldp-details-actions {
+    justify-content: stretch;
+  }
+
+  .ldp-btn-save {
+    width: 100%;
+    justify-content: center;
+    height: 44px;
+    font-size: 14px;
+  }
+
+  /* ════════════════════════════════
+     PLACEHOLDER TABS
+  ════════════════════════════════ */
+  .ldp-placeholder-tab {
+    height: 220px;
+  }
+
+  .ldp-placeholder-icon {
+    font-size: 32px;
+  }
+
+}
+
+/* ── Very small screens (≤ 380px) ── */
+@media (max-width: 380px) {
+
+  .ldp-tab {
+    padding: 10px 10px 8px;
+    font-size: 11.5px;
+  }
+
+  .ldp-lead-id-title {
+    font-size: 11.5px;
+  }
+
+  .ldp-topbar-icon-btn {
+    width: 26px;
+    height: 26px;
+  }
+
+  .ldp-content-topbar-actions {
+    gap: 4px;
+  }
+
+}
+.ldp-btn-edit-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--text-main);
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.ldp-btn-edit-toggle:hover {
+    background: var(--border);
+}
+
+.ldp-btn-edit-toggle--active {
+    background: #fee2e2;
+    border-color: #ef4444;
+    color: #ef4444;
+}
+
+.ldp-btn-edit-toggle--active:hover {
+    background: #fecaca;
+}
+
+.ldp-field-input[readonly], 
+.ldp-field-select[disabled] {
+    background: var(--surface2);
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+
+.ldp-field-input[readonly]:focus, 
+.ldp-field-select[disabled]:focus {
+    border-color: var(--border);
+    box-shadow: none;
+}

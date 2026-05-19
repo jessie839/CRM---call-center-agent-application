@@ -1,0 +1,280 @@
+/* ── Card ────────────────────────────────────────────────── */
+.pending-tasks-card {
+  height: 100%;
+}
+
+/* ── Header ──────────────────────────────────────────────── */
+.pending-tasks-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.pending-tasks-title {
+  font-size: 16px;
+  margin: 0;
+}
+
+.pending-tasks-view-all {
+  font-size: 12px;
+  cursor: pointer;
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+/* ── List ────────────────────────────────────────────────── */
+.pending-tasks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ── Task row ────────────────────────────────────────────── */
+.task-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+
+.task-row:last-child {
+  border-bottom: none;
+}
+
+.task-row--done {
+  opacity: 0.5;
+}
+
+/* ── Task icon ───────────────────────────────────────────── */
+.task-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* ── Task info ───────────────────────────────────────────── */
+.task-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.task-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-main);
+  text-decoration: none;
+}
+
+.task-title--done {
+  text-decoration: line-through;
+}
+
+.task-desc {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+
+
+/* ── Due date ────────────────────────────────────────────── */
+.task-due {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--muted);
+  padding: 4px 8px;
+  background: var(--surface2);
+  border-radius: var(--radius-sm);
+  margin-right: 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ── Check button ────────────────────────────────────────── */
+.task-check-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid var(--muted);
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+
+.task-check-btn--done {
+  border-color: var(--accent);
+  background: var(--accent);
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   MOBILE & IFRAME RESPONSIVENESS
+   Targets: tablets (≤768px), phones (≤480px), small iframes
+═══════════════════════════════════════════════════════════ */
+
+/* ── Tablet & small iframes (≤ 768px) ──────────────────── */
+@media (max-width: 768px) {
+  .pending-tasks-card {
+    height: auto;
+  }
+
+  .pending-tasks-header {
+    margin-bottom: 16px;
+  }
+
+  .task-row {
+    gap: 12px;
+    padding: 10px 0;
+  }
+
+  .task-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: var(--radius-sm);
+  }
+
+  .task-title {
+    font-size: 13px;
+  }
+
+  .task-desc {
+    font-size: 11px;
+  }
+
+  .task-due {
+    font-size: 10px;
+    padding: 3px 6px;
+    margin-right: 6px;
+  }
+
+  .task-check-btn {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+/* ── Mobile phones (≤ 480px) ────────────────────────────── */
+@media (max-width: 480px) {
+  .pending-tasks-header {
+    margin-bottom: 12px;
+  }
+
+  .pending-tasks-title {
+    font-size: 14px;
+  }
+
+  .pending-tasks-view-all {
+    font-size: 11px;
+  }
+
+  .task-row {
+    gap: 10px;
+    padding: 10px 0;
+    flex-wrap: wrap;
+  }
+
+  .task-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .task-info {
+    flex: 1 1 calc(100% - 120px); /* leave room for due + button */
+  }
+
+  .task-title {
+    font-size: 13px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .task-desc {
+    font-size: 11px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .task-due {
+    font-size: 10px;
+    padding: 3px 6px;
+    margin-right: 4px;
+  }
+
+  .task-check-btn {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* ── Extra small / constrained iframes (≤ 360px) ───────── */
+@media (max-width: 360px) {
+  .task-title {
+    font-size: 12px;
+  }
+
+  .task-desc {
+    font-size: 10px;
+    display: none; /* hide description on very small screens */
+  }
+
+  .task-due {
+    font-size: 10px;
+    padding: 2px 5px;
+    margin-right: 2px;
+  }
+
+  .task-check-btn {
+    width: 22px;
+    height: 22px;
+  }
+}
+/* ── Mobile check button overflow fix ──────────────────── */
+@media (max-width: 768px) {
+  .task-row {
+    flex-wrap: nowrap;
+    overflow: hidden;
+  }
+
+  .task-check-btn {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .task-row {
+    flex-wrap: nowrap;
+    overflow: hidden;
+    width: 100%;
+    padding-left: 14px;
+  }
+
+  .task-check-btn {
+    display: none;
+  }
+}
+
+/* ── BaseWrapper scroll fix for mobile ─────────────────── */
+@media (max-width: 768px) {
+ 
+
+  .tasks-page {
+    overflow-y: auto !important;
+    height: auto !important;
+    margin-bottom: 60px;
+  }
+
+  

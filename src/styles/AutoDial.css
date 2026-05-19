@@ -1,0 +1,476 @@
+/* ── Auto Dial Styling ── */
+
+.ad-drag-handle {
+    height: 24px;
+    background: var(--border);
+    cursor: grab;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ad-drag-handle:active {
+    cursor: grabbing;
+}
+
+/* Floating Call Widget */
+.ad-floating-call-new {
+    position: fixed;
+    top: 80px;
+    right: 32px;
+    width: 320px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    overflow: hidden;
+    z-index: 10000;
+    font-family: 'DM Sans', sans-serif;
+    padding: 24px;
+}
+
+.ad-header-new {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.ad-active-tag {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ad-dot-green {
+    width: 10px;
+    height: 10px;
+    background: #10b981;
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+    animation: ad-pulse-green 2s infinite;
+}
+
+.ad-dot-yellow {
+    width: 10px;
+    height: 10px;
+    background: #f59e0b;
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7);
+    animation: ad-pulse-yellow 2s infinite;
+}
+
+@keyframes ad-pulse-green {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+    }
+
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+    }
+
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+    }
+}
+
+@keyframes ad-pulse-yellow {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7);
+    }
+
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(245, 158, 11, 0);
+    }
+
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(245, 158, 11, 0);
+    }
+}
+
+.ad-tag-text {
+    color: #a855f7;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.ad-tag-text--paused {
+    color: #f59e0b;
+}
+
+.ad-expand-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-main);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+.ad-expand-btn:hover {
+    background: var(--surface2);
+}
+
+.ad-body-new {
+    margin-bottom: 24px;
+}
+
+.ad-contact-name-bold {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.ad-duration-small {
+    font-size: 14px;
+    color: var(--text-main);
+    margin-top: 4px;
+}
+
+.ad-footer-new {
+    display: flex;
+    gap: 12px;
+}
+
+.ad-btn-pill {
+    flex: 1;
+    height: 48px;
+    border-radius: 24px;
+    border: none;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ad-btn-mute {
+    background: #fff1f2;
+    color: #ef4444;
+}
+
+.ad-btn-mute.active {
+    background: #fee2e2;
+}
+
+.ad-btn-end {
+    background: #ef4444;
+    color: #ffffff;
+}
+
+.ad-btn-end:hover {
+    background: #dc2626;
+}
+
+
+
+/* Disposition Modal */
+.ad-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.5);
+    backdrop-filter: blur(2px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1050;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.ad-modal {
+    background: var(--surface);
+    border-radius: var(--radius);
+    width: 400px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.ad-modal-header {
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface2);
+    border-radius: var(--radius);
+    12px 0 0;
+}
+
+.ad-modal-title {
+    margin: 0;
+    font-size: 16px;
+    color: var(--text-main);
+    font-weight: 700;
+}
+
+.ad-modal-body {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.ad-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.ad-field label {
+    font-size: 13px;
+    color: var(--text-sec);
+    font-weight: 600;
+}
+
+.ad-select,
+.ad-textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--muted);
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--text-main);
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.ad-select:focus,
+.ad-textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.ad-textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.ad-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 8px;
+}
+
+.ad-btn-save {
+    background: var(--accent);
+    color: var(--text-inverse);
+    border: none;
+    padding: 10px 20px;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.2s;
+}
+
+.ad-btn-save:hover {
+    background: var(--accent);
+}
+
+
+/* Countdown Timer Widget */
+.ad-floating-timer {
+    position: fixed;
+    top: 80px;
+    right: 32px;
+    width: 280px;
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    z-index: 1000;
+    font-family: 'DM Sans', sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+.ad-timer-content {
+    padding: 20px 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--surface2);
+}
+
+.ad-timer-circle {
+    width: 50px;
+    height: 50px;
+}
+
+.ad-circular-chart {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    max-height: 250px;
+}
+
+.ad-circle-bg {
+    fill: none;
+    stroke: var(--border);
+    stroke-width: 3.8;
+}
+
+.ad-circle {
+    fill: none;
+    stroke-width: 2.8;
+    stroke-linecap: round;
+    stroke: var(--accent);
+    transition: stroke-dasharray 1s linear;
+}
+
+.ad-percentage {
+    fill: var(--text-main);
+    font-size: 12px;
+    font-weight: 700;
+    text-anchor: middle;
+}
+
+.ad-timer-info h4 {
+    margin: 0 0 4px 0;
+    font-size: 14px;
+    color: var(--text-main);
+}
+
+.ad-timer-info p {
+    margin: 0;
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.ad-btn-cancel-timer {
+    background: var(--surface);
+    border: none;
+    border-top: 1px solid var(--border);
+    padding: 12px;
+    color: var(--danger);
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: background 0.2s;
+}
+
+.ad-btn-cancel-timer:hover {
+    background: var(--danger-light);
+}
+
+/* Adding Auto Dial btn styling to Leads page topbar actions */
+.lm-btn-auto-dial {
+    height: 32px;
+    border-radius: var(--radius-sm);
+    border: none;
+    background: var(--success);
+    color: var(--text-inverse);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 0 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.35);
+    font-family: inherit;
+    transition: all 0.2s;
+}
+
+.lm-btn-auto-dial:hover {
+    background: #059669;
+}
+
+.lm-btn-auto-dial:disabled {
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* ── Dark Theme Support ── */
+[data-theme="dark"] .ad-floating-call-new {
+    background: rgba(30, 30, 45, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .ad-header-new.ad-drag-handle {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .ad-btn-mute {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+}
+
+[data-theme="dark"] .ad-btn-mute.active {
+    background: rgba(239, 68, 68, 0.2);
+}
+
+[data-theme="dark"] .ad-modal-overlay {
+    background: rgba(0, 0, 0, 0.75);
+}
+
+[data-theme="dark"] .ad-modal {
+    background: var(--surface);
+    border: 1px solid var(--border);
+}
+
+[data-theme="dark"] .ad-modal-header {
+    background: var(--surface3);
+    border-bottom: 1px solid var(--border);
+}
+
+[data-theme="dark"] .ad-select,
+[data-theme="dark"] .ad-textarea {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--text-main);
+}
+
+[data-theme="dark"] .ad-select:focus,
+[data-theme="dark"] .ad-textarea:focus {
+    border-color: var(--accent);
+    background: var(--surface3);
+}
+
+[data-theme="dark"] .ad-timer-content {
+    background: var(--surface2);
+    border-bottom: 1px solid var(--border);
+}
+
+[data-theme="dark"] .ad-btn-cancel-timer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+}
+
+[data-theme="dark"] .ad-btn-cancel-timer:hover {
+    background: rgba(239, 68, 68, 0.1);
+}
+
+[data-theme="dark"] .ad-floating-timer {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .ad-drag-handle {
+    background: var(--surface3);
+}
+
+[data-theme="dark"] .lm-btn-auto-dial-cancel {
+    background-color: rgba(239, 68, 68, 0.1);
+    border-color: rgba(239, 68, 68, 0.4);
+    color: #ef4444;
+}

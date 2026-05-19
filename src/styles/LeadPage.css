@@ -1,0 +1,1413 @@
+/* ── Google Font ── */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap');
+
+/* ── Reset / Base ── */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* ── Layout ── */
+.lm-root {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+    font-family: 'DM Sans', system-ui, sans-serif;
+    background: var(--surface2);
+    overflow: hidden;
+}
+
+.lm-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow: hidden;
+}
+
+/* ── Top Bar ── */
+.lm-topbar {
+    background: var(--surface); border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    height: 54px;
+    flex-shrink: 0;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+.lm-add-field--full {
+  grid-column: 1 / -1;
+}
+
+.lm-add-field-textarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  font-size: 13px;
+  color: var(--text-main);
+  resize: vertical;
+  font-family: inherit;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.lm-add-field-textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
+}
+
+
+
+.lm-topbar-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text-main);
+    letter-spacing: -0.02em;
+}
+
+.lm-topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ── Search ── */
+.lm-search-wrap {
+    position: relative;
+}
+
+.lm-topbar-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 24px 0px 24px;
+}
+
+.lm-topbar-right {
+    display: flex;
+    gap: 10px;
+}
+
+.lm-search-icon {
+    position: absolute;
+    left: 9px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.lm-search-input {
+    padding-left: 30px;
+    padding-right: 12px;
+    height: 32px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: var(--surface2);
+    font-size: 13px;
+    outline: none;
+    width: 190px;
+    font-family: inherit;
+    color: var(--text-sec);
+}
+
+/* ── Filter Select ── */
+.lm-filter-select {
+    height: 32px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: var(--surface2);
+    font-size: 13px;
+    padding: 0 10px;
+    font-family: inherit;
+    color: var(--text-sec);
+    outline: none;
+    cursor: pointer;
+}
+
+/* ── Header Fields Button ── */
+.lm-btn-header-fields {
+    height: 32px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: var(--surface);olor: var(--text-sec);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 0 14px;
+    cursor: pointer;
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color:var(--text-sec);
+}
+
+/* ── Add Lead Button ── */
+.lm-btn-add-lead {
+    height: 32px;
+    border-radius: var(--radius-sm);
+    border: none;
+    background: var(--accent);
+    color: var(--text-inverse);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 0 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.35);
+    font-family: inherit;
+}
+
+.lm-btn-add-lead-plus {
+    font-size: 16px;
+}
+
+/* ── Table Container ── */
+.lm-table-container {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 20px 24px;
+}
+
+.lm-table-card {
+    background: var(--surface);border-radius: 14px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
+}
+
+/* ── Table Header Row ── */
+.lm-table-header {
+    padding: 0 16px;
+    height: 48px;
+    background: var(--surface2);
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    align-items: center;
+    gap: 16px;
+}
+
+.lm-col-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+}
+
+/* ── Table Row ── */
+.lm-table-row {
+    padding: 0 16px;
+    height: 56px;
+    display: grid;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+    transition: background 0.12s;
+    border-bottom: 1px solid var(--border);
+}
+
+.lm-table-row:last-child {
+    border-bottom: none;
+}
+
+.lm-table-row--even {
+    background: var(--surface);
+}
+
+.lm-table-row--odd {
+    background: var(--surface2);
+}
+
+.lm-table-row--selected {
+    background: var(--accent-light);
+}
+
+.lm-table-row:hover {
+    background: var(--surface2);
+}
+
+/* ── Checkbox Column ── */
+.lm-checkbox-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lm-checkbox {
+    width: 14px;
+    height: 14px;
+    accent-color: var(--accent);
+    cursor: pointer;
+}
+
+/* ── Cell Content ── */
+.lm-cell {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.lm-cell-lead-id {
+    font-size: 11px;
+    font-family: monospace;
+    color: var(--muted);
+    font-weight: 600;
+}
+
+.lm-cell-first-name {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    overflow: hidden;
+}
+
+.lm-cell-first-name-text {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-main);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.lm-cell-last-name {
+    font-size: 13px;
+    color: var(--text-sec);
+    font-weight: 500;
+}
+
+.lm-cell-phone,
+.lm-cell-alt-phone {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.lm-cell-address {
+    font-size: 12px;
+    color: var(--muted);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.lm-cell-email {
+    font-size: 12px;
+    color: var(--text-sec);
+}
+
+/* ── Empty State ── */
+.lm-empty {
+    padding: 40px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* ── Pagination ── */
+.lm-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 14px;
+    padding: 0 2px;
+}
+
+.lm-pagination-info {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.lm-pagination-buttons {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.lm-pag-btn {
+    height: 30px;
+    border-radius: 7px;
+    font-size: 12px;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.lm-pag-btn--text {
+    padding: 0 12px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text-sec);
+    font-weight: 400;
+}
+
+.lm-pag-btn--num {
+    width: 30px;
+    min-width: 30px;
+    padding: 0;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text-sec);
+    font-weight: 400;
+}
+
+.lm-pag-btn--active {
+    border: none;
+    background: var(--accent);
+    color: var(--text-inverse);
+    font-weight: 700;
+}
+
+.lm-pag-btn--disabled {
+    color: var(--muted);
+    cursor: default;
+}
+
+.lm-pag-ellipsis {
+    color: var(--muted);
+    font-size: 12px;
+    padding: 0 2px;
+}
+
+/* ── Avatar ── */
+.lm-avatar {
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: var(--text-inverse);
+    flex-shrink: 0;
+}
+
+/* ── Disposition Badge ── */
+.lm-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 10px;
+    border-radius: 24px;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+    width: 110px;
+    text-align: center;
+}
+
+.lm-badge-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+/* badge colour variants */
+.lm-badge--open {
+    background: var(--accent-light);
+    color: var(--accent);
+    border: 1px solid #b3d9f5;
+}
+
+.lm-badge--open .lm-badge-dot {
+    background: var(--accent);
+}
+
+.lm-badge--new-lead {
+    background: var(--success-light);
+    color: var(--success);
+    border: 1px solid #b3e5b7;
+}
+
+.lm-badge--new-lead .lm-badge-dot {
+    background: var(--success);
+}
+
+.lm-badge--rejected {
+    background: var(--danger-light);
+    color: #d9362e;
+    border: 1px solid #f5b3b0;
+}
+
+.lm-badge--rejected .lm-badge-dot {
+    background: #d9362e;
+}
+
+.lm-badge--contacted {
+    background: var(--surface);olor: var(--warning);
+    border: 1px solid #f5e0a0;
+}
+
+.lm-badge--contacted .lm-badge-dot {
+    background: var(--warning);
+}
+
+.lm-badge--interested {
+    background: #f3edfb;
+    color: var(--accent);
+    border: 1px solid #d4b8f5;
+}
+
+.lm-badge--interested .lm-badge-dot {
+    background: var(--accent);
+}
+
+/* ── Header Fields Modal ── */
+.lm-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+    backdrop-filter: blur(3px);
+}
+
+.lm-modal {
+    background: var(--surface);border-radius: var(--radius);
+    overflow: hidden;
+    width: 440px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.lm-modal-header {
+    background: var(--accent);
+    padding: 16px 20px;
+}
+
+.lm-modal-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-inverse);
+}
+
+.lm-modal-body {
+    padding: 4px 20px;
+}
+
+.lm-modal-field-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+}
+
+.lm-modal-field-row--select-all {
+    padding: 12px 0;
+}
+
+.lm-modal-field-row-label {
+    font-size: 14px;
+    color: var(--text-main);
+}
+
+.lm-modal-field-row-label--bold {
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.lm-modal-checkbox {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--accent);
+    cursor: pointer;
+}
+
+.lm-modal-footer {
+    display: flex;
+    gap: 12px;
+    padding: 16px 20px;
+    border-top: 1px solid var(--border);
+}
+
+.lm-modal-btn-cancel {
+    flex: 1;
+    height: 40px;
+    border-radius: var(--radius-sm);
+    border: none;
+    background: var(--accent-light);
+    color: var(--accent);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.lm-modal-btn-save {
+    flex: 1;
+    height: 40px;
+    border-radius: var(--radius-sm);
+    border: none;
+    background: var(--accent);
+    color: var(--text-inverse);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+/* ── Add Lead Full-Screen ── */
+.lm-add-screen {
+    width: 100%;
+    height: 100%;
+    flex: 1;
+    min-height: 0;
+    background: var(--surface2);
+    display: flex;
+    flex-direction: column;
+    font-family: 'DM Sans', system-ui, sans-serif;
+    overflow: hidden;
+}
+
+.lm-add-screen-header {
+    background: var(--surface); border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 28px;
+    height: 54px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.lm-add-screen-header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.lm-btn-back {
+    width: 30px;
+    height: 30px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: var(--surface);ursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    font-size: 16px;
+}
+
+.lm-add-screen-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.lm-btn-save {
+    height: 34px;
+    border-radius: 7px;
+    border: none;
+    background: var(--accent);
+    color: var(--text-inverse);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 0 22px;
+    cursor: pointer;
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.lm-add-screen-body {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 24px 28px;
+}
+
+.lm-add-card {
+    background: var(--surface);border-radius: var(--radius);
+    border: 1px solid var(--border);
+    overflow: hidden;
+}
+
+.lm-add-card-section-header {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.lm-add-card-section-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+}
+
+.lm-add-card-section-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.lm-add-fields-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.lm-add-field {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+.lm-add-field--left {
+    border-right: 1px solid var(--border);
+}
+
+.lm-add-field-label {
+    font-size: 12px;
+    color: var(--text-sec);
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+
+.lm-add-field-required {
+    color: var(--danger);
+}
+
+.lm-add-field-input {
+    width: 100%;
+    height: 38px;
+    border-radius: 7px;
+    border: 1px solid var(--border);
+    padding: 0 12px;
+    font-size: 13px;
+    font-family: inherit;
+    outline: none;
+    color: var(--text-sec);
+    background: var(--surface);
+}
+
+.lm-add-field-input--error {
+    border-color: var(--danger);
+}
+
+.lm-add-field-select {
+    width: 100%;
+    height: 38px;
+    border-radius: 7px;
+    border: 1px solid var(--border);
+    padding: 0 12px;
+    padding-right: 32px;
+    font-size: 13px;
+    font-family: inherit;
+    outline: none;
+    color: var(--text-sec);
+    background: var(--surface);ursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2394a3b8' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+}
+
+.lm-add-field-error {
+    font-size: 11px;
+    color: var(--danger);
+    margin-top: 4px;
+}
+
+/* ── Filter Sidebar ── */
+.lm-filter-sidebar-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.45);
+  display: flex;
+  justify-content: flex-end;
+  z-index: 999;
+}
+.lm-filter-sidebar {
+  background: var(--surface);
+  width: 400px;
+  max-width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.1);
+  animation: slideInRight 0.3s ease forwards;
+}
+@keyframes slideInRight {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+.lm-filter-header {
+  display: flex;
+  align-items: center;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--border);
+  gap: 16px;
+}
+.lm-filter-back {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lm-filter-title {
+  font-size: 16px;
+}
+.lm-filter-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.lm-filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.lm-filter-group label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+.lm-filter-group input, .lm-filter-group select {
+  height: 38px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-sec);
+  padding: 0 12px;
+  font-size: 13px;
+  outline: none;
+  width: 100%;
+}
+.lm-filter-group select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2394a3b8' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+}
+.lm-filter-group-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-top: 8px;
+  margin-bottom: -8px;
+}
+.lm-filter-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.lm-filter-footer {
+  display: flex;
+  padding: 16px 24px;
+  border-top: 1px solid var(--border);
+  gap: 12px;
+  background: var(--surface);
+}
+.lm-btn-filter {
+  flex: 1;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  border: none;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent);
+  color: var(--text-inverse);
+}
+.lm-btn-call-inline {
+  background: var(--success-light);
+  color: var(--success);
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+.lm-btn-call-inline:hover {
+  transform: scale(1.1);
+  background: var(--success);
+  color: #fff;
+}
+
+.lm-btn-edit-inline {
+  background: var(--accent-light);
+  color: var(--accent);
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.lm-btn-edit-inline:hover {
+  transform: scale(1.1);
+  background: var(--accent);
+  color: var(--text-inverse);
+}
+
+/* ================================================================
+   MOBILE RESPONSIVE ADDITIONS FOR LeadPage.css
+   Paste at the bottom of your existing LeadPage.css file.
+   Desktop styles (above 768px) are not affected.
+   ================================================================ */
+
+/* ── Tablet (≤ 1024px) ── */
+@media (max-width: 1024px) {
+  .lm-table-container {
+    padding: 14px 16px;
+  }
+
+  .lm-topbar-actions {
+    padding: 0 16px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .lm-topbar-right {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .lm-add-screen-body {
+    padding: 16px;
+  }
+
+  .lm-add-fields-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ── Mobile (≤ 768px) ── */
+@media (max-width: 768px) {
+
+  /* Root and main layout rely on global flex: 1 and overflow: hidden to support internal scrolling */
+
+  /* ── Top bar actions ── */
+  .lm-topbar-actions {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 10px 12px;
+    gap: 8px;
+  }
+
+  .lm-topbar-right {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: flex-start;
+  }
+
+  .lm-search-wrap {
+    width: 100%;
+  }
+
+  .lm-search-input {
+    width: 100%;
+    height: 36px;
+    font-size: 14px;
+  }
+
+  .lm-filter-select {
+    flex: 1;
+    min-width: 120px;
+    height: 34px;
+    font-size: 13px;
+  }
+
+  .lm-btn-header-fields {
+    height: 34px;
+    font-size: 12px;
+    padding: 0 10px;
+  }
+
+  .lm-btn-auto-dial {
+    height: 34px;
+    font-size: 12px;
+    padding: 0 10px;
+  }
+
+  .lm-btn-add-lead {
+    height: 34px;
+    font-size: 12px;
+    padding: 0 12px;
+  }
+
+  /* ── Table container ── */
+  .lm-table-container {
+    padding: 10px 10px 20px;
+    overflow-x: hidden;
+    padding-bottom: 70px;
+  }
+
+  .lm-table-card {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    overflow: visible;
+  }
+
+  /* ── Hide the grid-based table header on mobile ── */
+  .lm-table-header {
+    display: none;
+  }
+
+  /* ── Rows become stacked distinct cards ── */
+  .lm-table-row {
+    display: flex !important;
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto !important;
+    padding: 16px;
+    gap: 10px;
+    background: var(--surface); border: 1px solid #eef0f8;
+    border-radius: var(--radius);
+    margin-bottom: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+    grid-template-columns: unset !important;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .lm-table-row:last-child {
+    margin-bottom: 0;
+  }
+
+  /* The checkbox sits in the top-right corner */
+  .lm-checkbox-cell {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    justify-content: flex-end;
+  }
+
+  /* ── Card row: top line (avatar + name + badge) ── */
+  .lm-cell-first-name {
+    gap: 10px;
+  }
+
+  .lm-cell-first-name-text {
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .lm-cell-last-name {
+    font-size: 13px;
+    margin-left: 38px; /* aligns under first name text, past avatar */
+    margin-top: -4px;
+    color: var(--text-sec);
+  }
+
+  .lm-cell-email {
+    font-size: 12px;
+    color: var(--muted);
+    margin-left: 38px;
+  }
+
+  .lm-cell-address {
+    font-size: 12px;
+    color: var(--muted);
+    margin-left: 38px;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+  }
+
+  .lm-cell-phone,
+  .lm-cell-alt-phone {
+    font-size: 12px;
+    color: var(--muted);
+    margin-left: 38px;
+  }
+
+  .lm-cell-lead-id {
+    font-size: 10px;
+    color: var(--muted);
+    margin-left: 38px;
+  }
+
+  /* Badge stays inline, push it left to match other fields */
+  .lm-badge {
+    margin-left: 38px;
+    font-size: 11px;
+  }
+
+  /* ── Pagination on mobile ── */
+  .lm-pagination {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 12px;
+  }
+
+  .lm-pagination-info {
+    font-size: 12px;
+  }
+
+  .lm-pagination-buttons {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  .lm-pag-btn--text {
+    padding: 0 10px;
+    font-size: 12px;
+  }
+
+  /* ── Header Fields Modal ── */
+  .lm-modal {
+    width: calc(100vw - 32px);
+    max-width: 420px;
+    margin: 0 16px;
+  }
+
+  .lm-modal-body {
+    padding: 4px 16px;
+    max-height: 55vh;
+    overflow-y: auto;
+  }
+
+  .lm-modal-footer {
+    padding: 12px 16px;
+  }
+
+  /* ── Add Lead Screen ── */
+  .lm-add-screen-body {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .lm-add-card {
+    border-radius: var(--radius);
+  }
+
+  .lm-add-fields-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* On single-column grid, all left-border dividers are removed */
+  .lm-add-field--left {
+    border-right: none;
+  }
+
+  .lm-add-field--full {
+    grid-column: 1;
+  }
+
+  .lm-add-field {
+    padding: 12px 14px;
+  }
+
+  .lm-add-field-input,
+  .lm-add-field-select {
+    height: 40px;
+    font-size: 14px;
+  }
+
+  .lm-add-field-label {
+    font-size: 12px;
+  }
+
+  .lm-add-field-textarea {
+    font-size: 14px;
+  }
+
+  .lm-add-card-section-header {
+    padding: 12px 14px;
+  }
+
+  .lm-add-card-section-title {
+    font-size: 13px;
+  }
+
+  .lm-add-screen-header {
+    padding: 0 16px;
+    height: 50px;
+  }
+
+  .lm-add-screen-title {
+    font-size: 14px;
+  }
+  
+  .lm-btn-back {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* ── Small phones (≤ 400px) ── */
+@media (max-width: 400px) {
+  .lm-topbar-right {
+    gap: 12px;
+  }
+
+  .lm-btn-header-fields,
+  .lm-btn-auto-dial,
+  .lm-btn-add-lead {
+    font-size: 11px;
+    padding: 0 8px;
+  }
+
+  .lm-filter-select {
+    font-size: 12px;
+  }
+
+  .lm-cell-first-name-text {
+    font-size: 13px;
+  }
+
+  .lm-pag-btn--num {
+    width: 26px;
+    min-width: 26px;
+    font-size: 11px;
+  }
+
+  .lm-pag-btn--text {
+    padding: 0 8px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .lm-add-screen-body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px 10px;
+    box-sizing: border-box;
+    background: var(--surface2);
+    height: calc(100vh - 54px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: y mandatory;
+  }
+
+  .lm-add-card {
+    background: var(--surface);border-radius: var(--radius);
+    border: 1px solid var(--border);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 78px);
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    overflow: hidden;
+  }
+
+  .lm-add-card-section-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+    background: var(--surface);
+  }
+
+  .lm-add-card-section-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .lm-add-card-section-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-main);
+  }
+
+  .lm-add-fields-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    flex: 1;
+  }
+
+  .lm-add-field {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    box-sizing: border-box;
+  }
+
+  .lm-add-field:last-child {
+    border-bottom: none;
+  }
+
+  .lm-add-field--left {
+    border-right: none;
+  }
+
+  .lm-add-field--full {
+    grid-column: 1;
+  }
+
+  .lm-add-field-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-sec);
+    margin-bottom: 6px;
+  }
+
+  .lm-add-field-required {
+    color: var(--danger);
+  }
+
+  .lm-add-field-input {
+    width: 100%;
+    height: 42px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    padding: 0 12px;
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    color: var(--text-sec);
+    background: var(--surface);ox-sizing: border-box;
+  }
+
+  .lm-add-field-input--error {
+    border-color: var(--danger);
+  }
+
+  .lm-add-field-input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  }
+
+  .lm-add-field-select {
+    width: 100%;
+    height: 42px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    padding: 0 12px;
+    padding-right: 32px;
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    color: var(--text-sec);
+    background: var(--surface);ursor: pointer;
+    appearance: none;
+    box-sizing: border-box;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2394a3b8' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+  }
+
+  .lm-add-field-select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  }
+
+  .lm-add-field-textarea {
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 10px 12px;
+    font-size: 14px;
+    color: var(--text-sec);
+    resize: none;
+    font-family: inherit;
+    outline: none;
+    box-sizing: border-box;
+    min-height: 90px;
+  }
+
+  .lm-add-field-textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  }
+
+  .lm-add-field-error {
+    font-size: 11px;
+    color: var(--danger);
+    margin-top: 4px;
+  }
+}
+
+.lm-btn-auto-dial-cancel {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  background-color: rgba(239, 68, 68, 0.06);
+  color: var(--danger);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.lm-btn-auto-dial-cancel:hover {
+  background-color: rgba(239, 68, 68, 0.12);
+  border-color: rgba(239, 68, 68, 0.5);
+}
+@media (max-width: 400px) {
+
+  .lm-add-screen-body {
+    padding: 10px 8px;
+    gap: 10px;
+    margin-bottom: 45px;
+  }
+
+  .lm-add-card {
+    height: calc(100vh - 74px);
+  }
+
+  .lm-add-field {
+    padding: 12px 12px;
+  }
+
+  .lm-add-field-input,
+  .lm-add-field-select {
+    height: 40px;
+    font-size: 13px;
+  }
+
+  .lm-add-field-label {
+    font-size: 11px;
+  }
+
+  .lm-add-field-textarea {
+    font-size: 13px;
+  }
+
+  .lm-add-card-section-title {
+    font-size: 13px;
+  }
+}

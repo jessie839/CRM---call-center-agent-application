@@ -1,0 +1,700 @@
+/* GLOBAL THEME VARIABLES */
+:root,
+[data-theme="light"] {
+    --surface: #ffffff;
+    --surface2: #f8fafc;
+    --surface3: #f1f5f9;
+    --border: #eef0f8;
+    --text-main: #1e1e2d;
+    --text-sec: #4b5563;
+    --muted: #94a3b8;
+
+    --success: #10b981;
+    --success-light: rgba(16, 185, 129, 0.1);
+    --warning: #f59e0b;
+    --warning-light: rgba(245, 158, 11, 0.1);
+    --danger: #ef4444;
+    --danger-light: rgba(239, 68, 68, 0.1);
+    --text-inverse: #ffffff;
+
+    --radii-base: 24px;
+    --shadow-base: 0 4px 12px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+
+    /* Default color (blue) */
+    --accent: #2196f3;
+    --accent-rgb: 33, 150, 243;
+    --accent-light: rgba(33, 150, 243, 0.1);
+    --accent-2: #5c6bc0;
+    --border-active: var(--accent);
+
+    /* Aliases for compatibility */
+    --bg: var(--surface);
+    --bg-soft: var(--surface2);
+    --text: var(--text-main);
+    --primary: var(--accent);
+    --primary-dark: var(--accent-2);
+
+    --radius: 24px;
+    --radius-sm: 12px;
+    --shadow: var(--shadow-base);
+    --space: clamp(12px, 2vw, 24px);
+    --space-lg: clamp(16px, 3vw, 32px);
+    --title: clamp(20px, 3vw, 28px);
+    --body: clamp(14px, 1.5vw, 16px);
+}
+
+[data-theme="dark"] {
+    --surface: #1e1e2d;
+    --surface2: #151521;
+    --surface3: #2b2b40;
+    --border: #323248;
+    --text-main: #f5f5f5;
+    --text-sec: #a1a5b7;
+    --muted: #7e8299;
+
+    --shadow-base: 0 4px 12px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* Color Options */
+[data-color="blue"] {
+    --accent: #2196f3;
+    --accent-rgb: 33, 150, 243;
+    --accent-light: rgba(33, 150, 243, 0.1);
+    --accent-2: #5c6bc0;
+    --border-active: var(--accent);
+}
+
+[data-color="green"] {
+    --accent: #10b981;
+    --accent-rgb: 16, 185, 129;
+    --accent-light: rgba(16, 185, 129, 0.1);
+    --accent-2: #059669;
+    --border-active: var(--accent);
+}
+
+[data-color="purple"] {
+    --accent: #8b5cf6;
+    --accent-rgb: 139, 92, 246;
+    --accent-light: rgba(139, 92, 246, 0.1);
+    --accent-2: #7c3aed;
+    --border-active: var(--accent);
+}
+
+[data-color="orange"] {
+    --accent: #f97316;
+    --accent-rgb: 249, 115, 22;
+    --accent-light: rgba(249, 115, 22, 0.1);
+    --accent-2: #ea580c;
+    --border-active: var(--accent);
+}
+
+[data-color="red"] {
+    --accent: #ef4444;
+    --accent-rgb: 239, 68, 68;
+    --accent-light: rgba(239, 68, 68, 0.1);
+    --accent-2: #dc2626;
+    --border-active: var(--accent);
+}
+
+[data-color="yellow"] {
+    --accent: #eab308;
+    --accent-rgb: 234, 179, 8;
+    --accent-light: rgba(234, 179, 8, 0.1);
+    --accent-2: #ca8a04;
+    --border-active: var(--accent);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Enforce uniform font sizes globally for body and headings */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+div {
+    /* If a specific smaller font size was set (e.g. tags), don't brutally override it */
+    /* Instead, we set a baseline var, but allow specific classes to override it */
+}
+
+body {
+    background: var(--surface2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+    color: var(--text-main);
+    font-size: var(--global-font-size, 14px);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: var(--global-font-size, 14px);
+}
+
+.card-container {
+    position: relative;
+    width: 1000px;
+    height: 650px;
+    background: var(--surface);
+    border-radius: 28px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.05), 0 10px 20px rgba(0, 0, 0, 0.03);
+    display: flex;
+    overflow: hidden;
+}
+
+/* OVERLAY SECTION (Init left) */
+.overlay-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    z-index: 10;
+    padding: 16px;
+    transition: transform 0.8s cubic-bezier(0.65, 0.05, 0.36, 1);
+}
+
+.gradient-panel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 24px;
+    overflow: hidden;
+    color: var(--text-inverse);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.gradient-bg {
+    position: absolute;
+    top: -20%;
+    left: -20%;
+    width: 140%;
+    height: 140%;
+    background-color: #0d1130;
+    background-image:
+        radial-gradient(circle at 20% 20%, var(--accent) 0%, transparent 55%),
+        radial-gradient(circle at 80% 40%, rgba(255, 255, 255, 0.8) 0%, transparent 50%),
+        radial-gradient(circle at 50% 10%, #9d4edd 0%, transparent 45%),
+        radial-gradient(circle at 80% 90%, #24BB96 0%, transparent 55%),
+        radial-gradient(circle at 10% 90%, #03045e 0%, transparent 60%);
+    filter: blur(60px);
+    animation: drift 3s ease-in-out infinite alternate;
+    z-index: 0;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes drift {
+    0% {
+        transform: scale(1.2) translate(0, 0) rotate(0deg);
+    }
+
+    33% {
+        transform: scale(1.4) translate(-6%, 5%) rotate(4deg);
+    }
+
+    66% {
+        transform: scale(1.3) translate(5%, -6%) rotate(-4deg);
+    }
+
+    100% {
+        transform: scale(1.2) translate(-3%, -3%) rotate(0deg);
+    }
+}
+
+.panel-content {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 48px;
+}
+
+.logo {
+    display: flex;
+}
+
+.panel-text {
+    margin-bottom: 24px;
+}
+
+.subtitle {
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 12px;
+    opacity: 0.95;
+    letter-spacing: 0.2px;
+}
+
+.title {
+    font-size: 34px;
+    line-height: 1.25;
+    font-weight: 700;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+}
+
+/* CREDENTIAL SECTION (Init right) */
+.cred-section {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    z-index: 5;
+    transition: transform 0.8s cubic-bezier(0.65, 0.05, 0.36, 1);
+}
+
+.form-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 60px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    background: var(--surface);
+}
+
+h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 10px;
+    letter-spacing: -0.5px;
+}
+
+.desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.5;
+    margin-bottom: 32px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: 8px;
+}
+
+.input-group input,
+.input-group select {
+    width: 100%;
+    padding: 13px 16px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-size: 14px;
+    color: var(--text-main);
+    outline: none;
+    transition: all 0.2s;
+    background: var(--surface);
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(33, 150, 243, 0.12);
+}
+
+.input-group input::placeholder {
+    color: var(--muted);
+}
+
+.password-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-input input {
+    padding-right: 45px;
+}
+
+.eye-icon {
+    position: absolute;
+    right: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.eye-icon:hover svg {
+    stroke: var(--accent);
+}
+
+.primary-btn {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background: var(--accent);
+    color: var(--text-inverse);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 12px;
+    box-shadow: 0 4px 14px rgba(60, 80, 224, 0.3);
+}
+
+.primary-btn:hover {
+    background: var(--accent-2);
+    box-shadow: 0 6px 20px var(--accent-light);
+}
+
+.primary-btn:active {
+    transform: scale(0.98);
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 28px 0;
+    color: var(--muted);
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid var(--border);
+}
+
+.divider span {
+    padding: 0 16px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.social-login {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 30px;
+}
+
+.social-btn {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid var(--border);
+    background: var(--surface2);
+    border-radius: 10px;
+    font-weight: 600;
+    color: var(--text-sec);
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.social-btn:hover {
+    background: var(--surface3);
+    border-color: var(--border);
+}
+
+/* .signup-link {
+    text-align: center;
+    font-size: 13px;
+    color: var(--muted);
+} */
+
+.forget-password-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 16px;
+    cursor: pointer;
+}
+
+.logo-mobile {
+    display: none;
+    margin-bottom: 24px;
+}
+
+/* Visibility Control for Forms */
+.login-form {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    z-index: 2;
+    pointer-events: auto;
+}
+
+.details-form {
+    opacity: 0;
+    transform: translateX(30px) scale(0.98);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* ====== ANIMATION STATE: SWITCHED ====== */
+.card-container.switched .overlay-container {
+    transform: translateX(100%);
+}
+
+.card-container.switched .cred-section {
+    transform: translateX(-100%);
+}
+
+.card-container.switched .login-form {
+    opacity: 0;
+    transform: translateX(-30px) scale(0.98);
+    pointer-events: none;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.card-container.switched .details-form {
+    transition: opacity 0.5s ease 0.3s, transform 0.5s ease 0.3s;
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    pointer-events: auto;
+    z-index: 3;
+}
+
+/* Select specific styles */
+select:not([multiple]) {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%239CA3AF%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px top 50%;
+    background-size: 10px auto;
+}
+
+select[multiple] {
+    height: auto;
+    padding: 8px;
+}
+
+select[multiple] option {
+    padding: 6px 10px;
+    border-radius: 6px;
+}
+
+select[multiple]:disabled,
+input[readonly] {
+    background: var(--surface3);
+    cursor: not-allowed;
+    color: var(--muted);
+}
+
+/* RESPONSIVE DESIGN */
+
+/* Tablet (768px to 1024px) */
+@media (max-width: 999px) {
+    .card-container {
+        width: 90%;
+        max-width: 900px;
+        height: 600px;
+    }
+
+    .panel-content {
+        padding: 40px;
+    }
+
+    .title {
+        font-size: 28px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    .form-wrapper {
+        padding: 50px 60px;
+    }
+}
+
+.forget-password-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 16px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    #details-form-element {
+        margin-bottom: 100px;
+    }
+}
+
+/* Mobile (below 768px) */
+@media (max-width: 768px) {
+
+    html,
+    body {
+        height: auto;
+        min-height: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    body {
+        align-items: flex-start;
+        padding: 0;
+        min-height: 100%;
+        overflow: visible;
+    }
+
+    .card-container {
+        width: 100%;
+        height: auto !important;
+        min-height: 100vh;
+        flex-direction: column;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    /* Hide the overlay/image section on mobile */
+    .overlay-container {
+        display: none !important;
+    }
+
+    /* Full width form on mobile */
+    .cred-section {
+        position: relative !important;
+        left: 0 !important;
+        top: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        transform: none !important;
+        z-index: 5;
+    }
+
+    .form-wrapper {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: 100vh;
+        padding: 40px 24px;
+        justify-content: flex-start;
+        overflow: visible;
+    }
+
+    .logo-mobile {
+        display: block;
+        height: auto;
+        width: 120px;
+        margin-bottom: 24px;
+
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    .desc {
+        font-size: 13px;
+        margin-bottom: 24px;
+    }
+
+    .input-group {
+        margin-bottom: 16px;
+    }
+
+    .input-group input,
+    .input-group select {
+        padding: 12px 14px;
+        font-size: 16px;
+    }
+
+    .primary-btn {
+        padding: 14px;
+        font-size: 14px;
+        margin-top: 10px;
+    }
+
+    .divider {
+        margin: 20px 0;
+    }
+
+    .social-login {
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+
+    .social-btn {
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    .signup-link {
+        font-size: 12px;
+        padding-bottom: 24px;
+    }
+
+    /* Animation state switched on mobile */
+    .card-container.switched .overlay-container {
+        display: none !important;
+    }
+
+    .card-container.switched .cred-section {
+        transform: none !important;
+    }
+
+    /* Fix form visibility on mobile — both forms stack, use z-index */
+    .login-form,
+    .details-form {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+    }
+
+    .details-form {
+        display: none;
+    }
+
+    .card-container.switched .login-form {
+        display: none;
+    }
+
+    .card-container.switched .details-form {
+        display: flex;
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
+    }
+}
