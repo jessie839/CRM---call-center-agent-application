@@ -1,6 +1,6 @@
 // import DooctiLogo from './DooctiLogo';
 
-import DooctiLogo from '../assets/Doocti-Logo-white.svg';
+import DooctiLogo from '../assets/Doocti-logo-white.svg';
 
 export default function GradientPanel({ activeField }) {
   let titleText = "Get access your personal hub for clarity and productivity";
